@@ -41,12 +41,13 @@ var previous_point_button = document.getElementById("previous point");
 var delete_point_button = document.getElementById("delete point");
 var add_points_button = document.getElementById("add points");
 var move_points_button = document.getElementById("move points");
+var default_eva_button = document.getElementById("default eva");
 // TODO field
-var evaluations_field = document.getElementById("evaluations")
+var evaluations_field = document.getElementById("evaluations");
 // TODO checkboxes
-var curves_checkbox = document.getElementById("show curves")
-var polygon_checkbox = document.getElementById("show polygon")
-var points_checkbox = document.getElementById("show points")
+var curves_checkbox = document.getElementById("show curves");
+var polygon_checkbox = document.getElementById("show polygon");
+var points_checkbox = document.getElementById("show points");
 // TODO listeners
 // buttons
 new_curve_button.addEventListener("click", function(event)) {
@@ -78,6 +79,10 @@ move_points_button.addEventListener("click", function(event)) {
     current_mode = 1;
     legend = "Point move tool selected";
 }
+default_eva_button.addEventListener("click", function(event)) {
+    evaluation_granularity = 50;
+    // fix field?
+}
 // other inputs
 // canvas
 
@@ -91,5 +96,6 @@ var current_selcted_point = 0;
 var show_curves = true;
 var show_polygon = true;
 var show_points = true;
+var evaluation_granularity = 50;
 
 // TODO draw
