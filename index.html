@@ -2,11 +2,42 @@
 <html lang="">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <title>pain and suffering</title>
   </head>
   <body>
-    <header></header>
-    <main></main>
-    <footer></footer>
+    <header><h3>Teste</h3></header>
+    <main>
+      <div id="first">
+        <button id="new curve" class="button">New Curve</button>
+        <button id="delete curve" class="button">Delete Curve</button>
+        <button id="next curve" class="button">Next Curve</button>
+        <button id="previous curve" class="button">Previous Curve</button>
+        <button id="next point" class="button">Next Point</button>
+        <button id="previous point" class="button">Previous Points</button>
+        <button id="delete point" class="button">Delete Current Point</button>
+        <input type="text" id="evaluations" name="evaluations" placeholder="Number of evaluations">
+      </div>
+      <div id="second">
+        <span>Mode:</span>
+        <button id="add points" class="button">Add Points</button>
+        <button id="move points" class="button">Move Points</button>
+      </div>
+      <div id="third">
+        <input type="checkbox" id="show curves" name="show curves" checked>
+        <label for="show curves">Show Curves</label>
+        <input type="checkbox" id="show polygon" name="show polygon" checked>
+        <label for="show polygon">Show Polygon</label>
+        <input type="checkbox" id="show points" name="show points" checked>
+        <label for="show points">Show Points</label>
+      </div>
+      <div id="fourth">
+        <legend id="Current Mode"></legend>
+        <canvas id="canvas" width="1000" height="500" class="canvas"></canvas>
+        
+      </div>
+      <script src="main.js"></script>
+    </main>
+    <footer><span>wouldn't flying be faster than walking?</span></footer>
   </body>
 </html>
