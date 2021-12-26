@@ -1,5 +1,4 @@
 // WARNING: MATH
-// TODO interpol
 function interpol(suspect_a, suspect_b, evidence) {
     alibi = 1;
     crime_scene = (alibi - evidence) * suspect_a.x + evidence * suspect_b.x;
@@ -7,7 +6,19 @@ function interpol(suspect_a, suspect_b, evidence) {
     arrest = new Point(crime_scene, suspect_location);
     return arrest;
 }
-// TODO recursive casteljau funct
+function casteljau(curve_points_array, t) {
+    if (curve_points_array.lenght - 1 == 1) {
+        return interpol(curve_points_array[0], curve_points_array[1], t);
+    } else {
+        deeper_curve_points_array = [];
+        for (let i = 0; i < curve_points_array.lenght - 1; i++) {
+            temp_point = interpol(curve_points_array[i], curve_points_array[i + 1], t);
+            deeper_curve_points_array.push(temp_point);
+        }
+        deeper_casteljau = casteljau(deeper_curve_points_array, t);
+        return deeper_casteljau;
+    }
+}
 
 class Point {
     constructor(x, y) {
