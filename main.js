@@ -29,16 +29,55 @@ class Point {
 
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
-var legenda = document.getElementById("Current Mode")
+var legend = document.getElementById("Current Mode")
 
 // TODO buttons
 var new_curve_button = document.getElementById("new curve");
+var delete_curve_button = document.getElementById("delete curve");
+var next_curve_button = document.getElementById("next curve");
+var previous_curve_button = document.getElementById("previous curve");
+var next_point_button = document.getElementById("next point");
+var previous_point_button = document.getElementById("previous point");
+var delete_point_button = document.getElementById("delete point");
+var add_points_button = document.getElementById("add points");
+var move_points_button = document.getElementById("move points");
 // TODO field
 var evaluations_field = document.getElementById("evaluations")
 // TODO checkboxes
 var curves_checkbox = document.getElementById("show curves")
+var polygon_checkbox = document.getElementById("show polygon")
+var points_checkbox = document.getElementById("show points")
 // TODO listeners
 // buttons
+new_curve_button.addEventListener("click", function(event)) {
+    // do things
+}
+delete_curve_button.addEventListener("click", function(event)) {
+    // do things
+}
+next_curve_button.addEventListener("click", function(event)) {
+    // do things
+}
+previous_curve_button.addEventListener("click", function(event)) {
+    // do things
+}
+next_point_button.addEventListener("click", function(event)) {
+    // do things
+}
+previous_point_button.addEventListener("click", function(event)) {
+    // do things
+}
+delete_point_button.addEventListener("click", function(event)) {
+    // do things
+}
+add_points_button.addEventListener("click", function(event)) {
+    current_mode = 0;
+    legend = "Point add tool seleted";
+}
+move_points_button.addEventListener("click", function(event)) {
+    current_mode = 1;
+    legend = "Point move tool selected";
+}
 // other inputs
 // canvas
 
@@ -46,5 +85,11 @@ var curves_checkbox = document.getElementById("show curves")
 var curves = [];
 
 // TODO state variables
+var current_mode = 0; // 0 == adding points, 1 == moving points
+var current_selected_curve = 0;
+var current_selcted_point = 0;
+var show_curves = true;
+var show_polygon = true;
+var show_points = true;
 
 // TODO draw
