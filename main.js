@@ -80,7 +80,7 @@ move_points_button.addEventListener("click", function(event) {
     legend = "Point move tool selected";
 });
 default_eva_button.addEventListener("click", function(event) {
-    evaluation_granularity = 50;
+    evaluation_granularity = 100;
     // fix field?
 });
 // other inputs
@@ -121,9 +121,6 @@ canvas.addEventListener("mouseup", function(event) {
 });
 
 
-
-
-
 var curves = [];
 
 // TODO state variables
@@ -133,6 +130,6 @@ var current_selcted_point = 0;
 var show_curves = true;
 var show_polygon = true;
 var show_points = true;
-var evaluation_granularity = 50;
+var evaluation_granularity = 100;
 var mouse_held_down = false;
 // TODO draw
