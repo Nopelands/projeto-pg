@@ -75,7 +75,7 @@ delete_curve_button.addEventListener("click", function(event) {
         return;
     }
 });
-next_curve_button.addEventListener("click", function(event) {
+previous_curve_button.addEventListener("click", function(event) {
     if (current_selected_curve > 0) {
         current_selected_curve--;
         current_selected_point = 0;
@@ -84,8 +84,8 @@ next_curve_button.addEventListener("click", function(event) {
         return;
     }
 });
-previous_curve_button.addEventListener("click", function(event) {
-    if (current_selected_curve < curves.length - 2) {
+next_curve_button.addEventListener("click", function(event) {
+    if (current_selected_curve < curves.length - 1  ) {
         current_selected_curve++;
         current_selected_point = 0;
         draw_screen();
@@ -172,7 +172,7 @@ canvas.addEventListener("mousemove", function(event) {
             curves[current_selected_curve].splice(curves[current_selected_curve].length-1,1,temp_point_canvas);
         }
         else if (current_mode == 1){
-            curves[current_selected_curve].splice(curves[current_selected_curve].length,1,temp_point_canvas);
+            curves[current_selected_curve].splice(current_selected_point,1,temp_point_canvas);
         }
         draw_screen();
     }
@@ -252,7 +252,7 @@ function draw_screen() {
     if(show_points) {
         for(i = 0; i < curves.length; i++) {
             for(let j = 0; j < curves[i].length; j++) {
-                if((i = current_selected_curve) && (j = current_selected_point)) {
+                if((i == current_selected_curve) && (j == current_selected_point)) {
                     context.strokeStyle = "purple";
                 } else {
                     context.strokeStyle = "black";
