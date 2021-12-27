@@ -52,7 +52,16 @@ var points_checkbox = document.getElementById("show points");
 // TODO listeners
 // buttons
 new_curve_button.addEventListener("click", function(event) {
-    // do things
+    if(current_selected_curve == -1 || (curves[current_selected_curve] > 1)) {
+        current_mode = 0;
+        legend.innerText = "Point add tool selected"
+        var new_curve = [];
+        curves.push(new_curve);
+        current_selected_point = 0;
+        current_selected_curve = curves.length - 1; // 0????
+    } else {
+        legend.innerText = "Current curve must have at least 2 points";
+    }
 });
 delete_curve_button.addEventListener("click", function(event) {
     // do things
@@ -126,7 +135,7 @@ var curves = [];
 
 // TODO state variables
 var current_mode = -1; // 0 == adding points, 1 == moving points
-var current_selected_curve = 0;
+var current_selected_curve = -1;
 var current_selected_point = 0;
 var show_curves = true;
 var show_polygon = true;
