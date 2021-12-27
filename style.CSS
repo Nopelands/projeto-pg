@@ -1,0 +1,20 @@
+
+html {
+    background: darkslategray;
+    background: linear-gradient(60deg, darkslategray 40%, rgb(54, 54, 138) 80%,rgb(106, 106, 199) );
+    font-family: 'Calibri';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#canvas{
+    background-color: white;
+    border: 5px solid red;
+    width: 1200px;
+    height: 600px;
+}
+
+.title{
+    color: white;
+}
