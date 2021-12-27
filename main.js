@@ -126,10 +126,78 @@ var curves = [];
 // TODO state variables
 var current_mode = 0; // 0 == adding points, 1 == moving points
 var current_selected_curve = 0;
-var current_selcted_point = 0;
+var current_selected_point = 0;
 var show_curves = true;
 var show_polygon = true;
 var show_points = true;
 var evaluation_granularity = 100;
 var mouse_held_down = false;
+
 // TODO draw
+function draw_point(point) {
+    context.beginPath();
+    context.arc(point.x, point.y, 4.0, 0, 2 * Math.PI)
+    context.stroke();
+}
+
+function draw_line(point_a, point_b) {
+    context.beginPath();
+    context.lineTo(point_a.x, point_a.y);
+    context.lineTo(point_b.x, point_b.y);
+    context.strokeStyle = "5px";
+    context.stroke();
+}
+
+function draw_polygon(points_array) {
+    for(let i = 0; i < points_array.lenght - 1; i++) {
+        draw_line(points_array[i], points_array[i + 1]);
+    }
+}
+
+function draw_curve(curve) {
+    if(curve.lenght > 2) {
+        var evaluation_points = [];
+        evaluation_points.push(curve[0]);
+        for(let i = 1; i < evaluation_granularity - 2; i++) {
+            evaluation_points.push(casteljau(curva, i / evaluation_granularity));
+        }
+        evaluation_points.push(curve[curve.lenght - 1]);
+        draw_polygon(evaluation_points);
+    }
+}
+
+function draw_screen() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    if(show_curves && evaluation_granularity > 1) {
+        for (let i = 0; i < curves.length; i++) {
+            if (current_selected_curve == i) {
+                context.strokeStyle = "";
+            } else {
+                context.strokeStyle = "";
+            }
+            draw_curve(curves[i]);
+        }
+    }
+    if(show_polygon) {
+        for (let i = 0; i < curves.length; i++) {
+            if (current_selected_curve == i) {
+                context.strokeStyle = "";
+            } else {
+                context.strokeStyle = "";
+            }
+            draw_polygon(curves[i]);
+        }
+    }
+    if(show_points) {
+        for(let i = 0; i < curves.lenght; i++) {
+            for(let j = 0; j < curvas[i].lenght; j++) {
+                if((i = current_selected_curve) && (j = current_selected_point)) {
+                    context.strokeStyle = "";
+                } else {
+                    context.strokeStyle = "";
+                }
+                draw_point(curves[i][j]);
+            }
+        }
+    }
+}
