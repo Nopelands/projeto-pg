@@ -31,7 +31,7 @@ var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
 var legend = document.getElementById("Current Mode")
 
-// TODO buttons
+// buttons
 var new_curve_button = document.getElementById("new curve");
 var delete_curve_button = document.getElementById("delete curve");
 var next_curve_button = document.getElementById("next curve");
@@ -42,12 +42,13 @@ var delete_point_button = document.getElementById("delete point");
 var add_points_button = document.getElementById("add points");
 var move_points_button = document.getElementById("move points");
 var default_eva_button = document.getElementById("default eva");
-// TODO field
+// field
 var evaluations_field = document.getElementById("evaluations");
-// TODO checkboxes
+// checkboxes
 var curves_checkbox = document.getElementById("show curves");
 var polygon_checkbox = document.getElementById("show polygon");
 var points_checkbox = document.getElementById("show points");
+
 // TODO listeners
 // buttons
 new_curve_button.addEventListener("click", function(event) {
@@ -133,10 +134,9 @@ var show_points = true;
 var evaluation_granularity = 100;
 var mouse_held_down = false;
 
-// TODO draw
 function draw_point(point) {
     context.beginPath();
-    context.arc(point.x, point.y, 4.0, 0, 2 * Math.PI)
+    context.arc(point.x, point.y, 4, 0, 2 * Math.PI)
     context.stroke();
 }
 
