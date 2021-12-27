@@ -7,11 +7,11 @@ function interpol(suspect_a, suspect_b, evidence) {
     return arrest;
 }
 function casteljau(curve_points_array, t) {
-    if (curve_points_array.lenght - 1 == 1) {
+    if (curve_points_array.length - 1 == 1) {
         return interpol(curve_points_array[0], curve_points_array[1], t);
     } else {
         deeper_curve_points_array = [];
-        for (let i = 0; i < curve_points_array.lenght - 1; i++) {
+        for (let i = 0; i < curve_points_array.length - 1; i++) {
             temp_point = interpol(curve_points_array[i], curve_points_array[i + 1], t);
             deeper_curve_points_array.push(temp_point);
         }
@@ -92,7 +92,7 @@ previous_curve_button.addEventListener("click", function(event) {
     }
 });
 next_point_button.addEventListener("click", function(event) {
-    if (current_selected_point < curves[current_selected_curve].lenght - 1) {
+    if (current_selected_point < curves[current_selected_curve].length - 1) {
         current_selected_point++;
         draw_screen();
     } else {
@@ -108,10 +108,10 @@ previous_point_button.addEventListener("click", function(event) {
     }
 });
 delete_point_button.addEventListener("click", function(event) {
-    if (curves[current_selected_curve].lenght > 0) {
+    if (curves[current_selected_curve].length > 0) {
         curves[current_selected_curve].splice(current_selected_point, 1);
         current_selected_point = 0;
-        if (curves[current_selected_curve].lenght > 0) {
+        if (curves[current_selected_curve].length > 0) {
             curves.splice(current_selected_curve, 1);
             current_selected_point = 0;
             if (current_selected_curve > 0) {
@@ -159,7 +159,7 @@ canvas.addEventListener("mousedown", function(event) {
     mouse_held_down = true;
     var temp_point_canvas = new Point(event.offsetX, event.offsetY);
     if(current_mode == 0) {
-        curves[current_selected_curve].push(point_a);
+        curves[current_selected_curve].push(temp_point_canvas);
     } else if(current_mode == 1) {
         curves[current_selected_curve].splice(current_selected_point,1,temp_point_canvas);
     }
@@ -210,19 +210,19 @@ function draw_line(point_a, point_b) {
 }
 
 function draw_polygon(points_array) {
-    for(let i = 0; i < points_array.lenght - 1; i++) {
+    for(let i = 0; i < points_array.length - 1; i++) {
         draw_line(points_array[i], points_array[i + 1]);
     }
 }
 
 function draw_curve(curve) {
-    if(curve.lenght > 2) {
+    if(curve.length > 2) {
         var evaluation_points = [];
         evaluation_points.push(curve[0]);
         for(let i = 1; i < evaluation_granularity - 2; i++) {
             evaluation_points.push(casteljau(curva, i / evaluation_granularity));
         }
-        evaluation_points.push(curve[curve.lenght - 1]);
+        evaluation_points.push(curve[curve.length - 1]);
         draw_polygon(evaluation_points);
     }
 }
@@ -250,8 +250,9 @@ function draw_screen() {
         }
     }
     if(show_points) {
-        for(let i = 0; i < curves.lenght; i++) {
-            for(let j = 0; j < curvas[i].lenght; j++) {
+        for(i = 0; i < curves.length; i++) {
+            for(let j = 0; j < curves[i].length; j++) {
+                console.log("a")
                 if((i = current_selected_curve) && (j = current_selected_point)) {
                     context.strokeStyle = "purple";
                 } else {
