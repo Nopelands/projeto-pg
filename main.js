@@ -49,7 +49,7 @@ var curves_checkbox = document.getElementById("show curves");
 var polygon_checkbox = document.getElementById("show polygon");
 var points_checkbox = document.getElementById("show points");
 
-// TODO listeners
+// listeners
 // buttons
 new_curve_button.addEventListener("click", function(event) {
     if(current_selected_curve == -1 || (curves[current_selected_curve] > 1)) {
@@ -64,22 +64,64 @@ new_curve_button.addEventListener("click", function(event) {
     }
 });
 delete_curve_button.addEventListener("click", function(event) {
-    // do things
+    if (curves.length > 0) {
+        curves.splice(current_selected_curve, 1);
+        current_selected_point = 0;
+        if (current_selected_curve > 0) {
+            current_selected_curve--;
+        }
+        draw_screen();
+    } else {
+        return;
+    }
 });
 next_curve_button.addEventListener("click", function(event) {
-    // do things
+    if (current_selected_curve > 0) {
+        current_selected_curve--;
+        current_selected_point = 0;
+        draw_screen();
+    } else {
+        return;
+    }
 });
 previous_curve_button.addEventListener("click", function(event) {
-    // do things
+    if (current_selected_curve < curves.length - 2) {
+        current_selected_curve++;
+        current_selected_point = 0;
+        draw_screen();
+    }
 });
 next_point_button.addEventListener("click", function(event) {
-    // do things
+    if (current_selected_point < curves[current_selected_curve].lenght - 1) {
+        current_selected_point++;
+        draw_screen();
+    } else {
+        return;
+    }
 });
 previous_point_button.addEventListener("click", function(event) {
-    // do things
+    if (current_selected_point > 0) {
+        current_selected_point--;
+        draw_screen();
+    } else {
+        return;
+    }
 });
 delete_point_button.addEventListener("click", function(event) {
-    // do things
+    if (curves[current_selected_curve].lenght > 0) {
+        curves[current_selected_curve].splice(current_selected_point, 1);
+        current_selected_point = 0;
+        if (curves[current_selected_curve].lenght > 0) {
+            curves.splice(current_selected_curve, 1);
+            current_selected_point = 0;
+            if (current_selected_curve > 0) {
+                current_selected_curve --;
+            }
+        }
+        draw_screen();
+    } else {
+        return;
+    }
 });
 add_points_button.addEventListener("click", function(event) {
     current_mode = 0;
@@ -91,22 +133,26 @@ move_points_button.addEventListener("click", function(event) {
 });
 default_eva_button.addEventListener("click", function(event) {
     evaluation_granularity = 100;
+    draw_screen();
     // fix field?
 });
 // other inputs
 curves_checkbox.addEventListener("click", function(event) {
     show_curves = !show_curves;
+    draw_screen();
 });
 polygon_checkbox.addEventListener("click", function(event) {
     show_polygon = !show_polygon;
+    draw_screen();
 });
 points_checkbox.addEventListener("click", function(event) {
     show_points = !show_points;
+    draw_screen();
 });
 evaluations_field.addEventListener("keyup", function(event) {
     var user_input = event.target.value;
     evaluation_granularity = parseInt(user_input);
-    // aaaa
+    draw_screen();
 });
 // canvas
 canvas.addEventListener("mousedown", function(event) {
