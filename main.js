@@ -220,7 +220,7 @@ function draw_curve(curve) {
         var evaluation_points = [];
         evaluation_points.push(curve[0]);
         for(let i = 1; i < evaluation_granularity - 2; i++) {
-            evaluation_points.push(casteljau(curva, i / evaluation_granularity));
+            evaluation_points.push(casteljau(curve, i / evaluation_granularity));
         }
         evaluation_points.push(curve[curve.length - 1]);
         draw_polygon(evaluation_points);
