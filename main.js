@@ -52,7 +52,7 @@ var points_checkbox = document.getElementById("show points");
 // listeners
 // buttons
 new_curve_button.addEventListener("click", function(event) {
-    if(current_selected_curve == -1 || (curves[current_selected_curve] > 1)) {
+    if(current_selected_curve == -1 || (curves[current_selected_curve].length > 1)) {
         current_mode = 0;
         legend.innerText = "Point add tool selected"
         var new_curve = [];
@@ -252,7 +252,6 @@ function draw_screen() {
     if(show_points) {
         for(i = 0; i < curves.length; i++) {
             for(let j = 0; j < curves[i].length; j++) {
-                console.log("a")
                 if((i = current_selected_curve) && (j = current_selected_point)) {
                     context.strokeStyle = "purple";
                 } else {
