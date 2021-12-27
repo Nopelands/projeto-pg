@@ -171,9 +171,9 @@ function draw_screen() {
     if(show_curves && evaluation_granularity > 1) {
         for (let i = 0; i < curves.length; i++) {
             if (current_selected_curve == i) {
-                context.strokeStyle = "";
+                context.strokeStyle = "red";
             } else {
-                context.strokeStyle = "";
+                context.strokeStyle = "blue";
             }
             draw_curve(curves[i]);
         }
@@ -181,9 +181,9 @@ function draw_screen() {
     if(show_polygon) {
         for (let i = 0; i < curves.length; i++) {
             if (current_selected_curve == i) {
-                context.strokeStyle = "";
+                context.strokeStyle = "green";
             } else {
-                context.strokeStyle = "";
+                context.strokeStyle = "orange";
             }
             draw_polygon(curves[i]);
         }
@@ -192,9 +192,9 @@ function draw_screen() {
         for(let i = 0; i < curves.lenght; i++) {
             for(let j = 0; j < curvas[i].lenght; j++) {
                 if((i = current_selected_curve) && (j = current_selected_point)) {
-                    context.strokeStyle = "";
+                    context.strokeStyle = "purple";
                 } else {
-                    context.strokeStyle = "";
+                    context.strokeStyle = "black";
                 }
                 draw_point(curves[i][j]);
             }
