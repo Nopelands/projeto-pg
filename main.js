@@ -2,7 +2,7 @@
 function interpol(suspect_a, suspect_b, evidence) {
     alibi = 1;
     crime_scene = (alibi - evidence) * suspect_a.x + evidence * suspect_b.x; // interpolation for x
-    suspect_location = (alibi - evidence) * suspect_a.y + evidence * suspect_b.y; // inteprolation for y
+    suspect_location = (alibi - evidence) * suspect_a.y + evidence * suspect_b.y; // interpolation for y
     arrest = new Point(crime_scene, suspect_location);
     return arrest;
 }
@@ -225,7 +225,7 @@ function draw_curve(curve) {
     if(curve.length > 2) {
         var evaluation_points = [];
         evaluation_points.push(curve[0]);
-        for(let i = 1; i < evaluation_granularity - 2; i++) {
+        for(let i = 1; i < evaluation_granularity - 1; i++) {
             evaluation_points.push(casteljau(curve, i / evaluation_granularity));
         }
         evaluation_points.push(curve[curve.length - 1]);
