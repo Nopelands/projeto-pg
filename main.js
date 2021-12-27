@@ -74,11 +74,11 @@ delete_point_button.addEventListener("click", function(event) {
 });
 add_points_button.addEventListener("click", function(event) {
     current_mode = 0;
-    legend = "Point add tool seleted";
+    legend.innerText = "Point add tool seleted";
 });
 move_points_button.addEventListener("click", function(event) {
     current_mode = 1;
-    legend = "Point move tool selected";
+    legend.innerText = "Point move tool selected";
 });
 default_eva_button.addEventListener("click", function(event) {
     evaluation_granularity = 100;
