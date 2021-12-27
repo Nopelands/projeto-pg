@@ -50,41 +50,78 @@ var polygon_checkbox = document.getElementById("show polygon");
 var points_checkbox = document.getElementById("show points");
 // TODO listeners
 // buttons
-new_curve_button.addEventListener("click", function(event)) {
+new_curve_button.addEventListener("click", function(event) {
     // do things
-}
-delete_curve_button.addEventListener("click", function(event)) {
+});
+delete_curve_button.addEventListener("click", function(event) {
     // do things
-}
-next_curve_button.addEventListener("click", function(event)) {
+});
+next_curve_button.addEventListener("click", function(event) {
     // do things
-}
-previous_curve_button.addEventListener("click", function(event)) {
+});
+previous_curve_button.addEventListener("click", function(event) {
     // do things
-}
-next_point_button.addEventListener("click", function(event)) {
+});
+next_point_button.addEventListener("click", function(event) {
     // do things
-}
-previous_point_button.addEventListener("click", function(event)) {
+});
+previous_point_button.addEventListener("click", function(event) {
     // do things
-}
-delete_point_button.addEventListener("click", function(event)) {
+});
+delete_point_button.addEventListener("click", function(event) {
     // do things
-}
-add_points_button.addEventListener("click", function(event)) {
+});
+add_points_button.addEventListener("click", function(event) {
     current_mode = 0;
     legend = "Point add tool seleted";
-}
-move_points_button.addEventListener("click", function(event)) {
+});
+move_points_button.addEventListener("click", function(event) {
     current_mode = 1;
     legend = "Point move tool selected";
-}
-default_eva_button.addEventListener("click", function(event)) {
+});
+default_eva_button.addEventListener("click", function(event) {
     evaluation_granularity = 50;
     // fix field?
-}
+});
 // other inputs
+curves_checkbox.addEventListener("click", function(event) {
+    show_curves = !show_curves;
+});
+polygon_checkbox.addEventListener("click", function(event) {
+    show_polygon = !show_polygon;
+});
+points_checkbox.addEventListener("click", function(event) {
+    show_points = !show_points;
+});
+evaluations_field.addEventListener("keyup", function(event) {
+    var user_input = event.target.value;
+    evaluation_granularity = parseInt(user_input);
+    // aaaa
+});
 // canvas
+canvas.addEventListener("mousedown", function(event) {
+    mouse_held_down = true;
+    var temp_point_canvas = new Point(event.offsetX, event.offsetY);
+    if(current_mode == 0) {
+        // add point
+    } else if(current_mode == 1) {
+        // move point
+    }
+});
+canvas.addEventListener("mousemove", function(event) {
+    if(mouse_held_down) {
+        var temp_point_canvas = new Point(event.offsetX, event.offsetY);
+        if (current_mode == 1) {
+            // move point
+        }
+    }
+});
+canvas.addEventListener("mouseup", function(event) {
+    mouse_held_down = false;
+});
+
+
+
 
 
 var curves = [];
@@ -97,5 +134,5 @@ var show_curves = true;
 var show_polygon = true;
 var show_points = true;
 var evaluation_granularity = 50;
-
+var mouse_held_down = false;
 // TODO draw
