@@ -52,6 +52,9 @@ var points_checkbox = document.getElementById("show points");
 // listeners
 // buttons
 new_curve_button.addEventListener("click", function(event) {
+    if (curves.length == 0) {
+        curves.push([]);
+    }
     if(current_selected_curve == -1 || (curves[current_selected_curve].length > 1)) {
         current_mode = 0;
         legend.innerText = "Point add tool selected"
@@ -69,6 +72,8 @@ delete_curve_button.addEventListener("click", function(event) {
         current_selected_point = 0;
         if (current_selected_curve > 0) {
             current_selected_curve--;
+        } else {
+            curves = [];
         }
         draw_screen();
     } else {
@@ -108,10 +113,11 @@ previous_point_button.addEventListener("click", function(event) {
     }
 });
 delete_point_button.addEventListener("click", function(event) {
+    console.log("aqui");
     if (curves[current_selected_curve].length > 0) {
         curves[current_selected_curve].splice(current_selected_point, 1);
         current_selected_point = 0;
-        if (curves[current_selected_curve].length > 0) {
+        if (curves[current_selected_curve].length == 0) {
             curves.splice(current_selected_curve, 1);
             current_selected_point = 0;
             if (current_selected_curve > 0) {
