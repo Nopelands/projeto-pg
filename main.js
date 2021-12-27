@@ -113,21 +113,27 @@ canvas.addEventListener("mousedown", function(event) {
     mouse_held_down = true;
     var temp_point_canvas = new Point(event.offsetX, event.offsetY);
     if(current_mode == 0) {
-        // add point
+        curves[current_selected_curve].push(point_a);
     } else if(current_mode == 1) {
-        // move point
+        curves[current_selected_curve].splice(current_selected_point,1,temp_point_canvas);
     }
+    draw_screen();
 });
 canvas.addEventListener("mousemove", function(event) {
     if(mouse_held_down) {
         var temp_point_canvas = new Point(event.offsetX, event.offsetY);
-        if (current_mode == 1) {
-            // move point
+        if (current_mode == 0) {
+            curves[current_selected_curve].splice(curves[current_selected_curve].length-1,1,temp_point_canvas);
         }
+        else if (current_mode == 1){
+            curves[current_selected_curve].splice(curves[current_selected_curve].length,1,temp_point_canvas);
+        }
+        draw_screen();
     }
 });
 canvas.addEventListener("mouseup", function(event) {
     mouse_held_down = false;
+    draw_screen();
 });
 
 
