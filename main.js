@@ -74,7 +74,7 @@ delete_point_button.addEventListener("click", function(event) {
 });
 add_points_button.addEventListener("click", function(event) {
     current_mode = 0;
-    legend.innerText = "Point add tool seleted";
+    legend.innerText = "Point add tool selected";
 });
 move_points_button.addEventListener("click", function(event) {
     current_mode = 1;
@@ -125,7 +125,7 @@ canvas.addEventListener("mouseup", function(event) {
 var curves = [];
 
 // TODO state variables
-var current_mode = 0; // 0 == adding points, 1 == moving points
+var current_mode = -1; // 0 == adding points, 1 == moving points
 var current_selected_curve = 0;
 var current_selected_point = 0;
 var show_curves = true;
