@@ -1,8 +1,8 @@
 // WARNING: MATH
 function interpol(suspect_a, suspect_b, evidence) {
     alibi = 1;
-    crime_scene = (alibi - evidence) * suspect_a.x + evidence * suspect_b.x;
-    suspect_location = (alibi - evidence) * suspect_a.y + evidence * suspect_b.y;
+    crime_scene = (alibi - evidence) * suspect_a.x + evidence * suspect_b.x; // interpolation for x
+    suspect_location = (alibi - evidence) * suspect_a.y + evidence * suspect_b.y; // inteprolation for y
     arrest = new Point(crime_scene, suspect_location);
     return arrest;
 }
